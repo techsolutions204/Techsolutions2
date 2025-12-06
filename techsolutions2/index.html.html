@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Solutions - Planes de Streaming y Servicios Digitales</title>
+  <meta name="description" content="Planes de streaming, música y herramientas digitales: Netflix, Disney+, Max, Prime Video, Rakuten Viki, IPTV, Spotify, Canva, Duolingo, ChatGPT y más.">
+
+  <!-- Fuentes e iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --bg-soft-alt: #0b1120;
+      --primary: #0ea5e9;
+      --primary-soft: rgba(56, 189, 248, 0.18);
+      --accent-green: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius: 18px;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.4rem;
+    }
+
+    /* NAVBAR */
+    header {
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      background: rgba(2, 6, 23, 0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.26);
+      z-index: 100;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22d3ee 0, #0ea5e9 40%, #0369a1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.7);
+    }
+
+    .nav-logo-circle img.logo-mascota {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .nav-brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .nav-brand-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-menu a {
+      opacity: 0.9;
+      transition: 0.2s;
+    }
+
+    .nav-menu a:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      background: var(--primary);
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #0b1120;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
+      white-space: nowrap;
+    }
+
+    .nav-cta i {
+      font-size: 1rem;
+    }
+
+    /* HERO */
+    #inicio {
+      padding: 2.2rem 0 2rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-highlight {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      max-width: 560px;
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.78rem;
+    }
+
+    .hero-badge {
+      padding: 0.32rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-badge i {
+      color: var(--primary);
+      font-size: 0.85rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.3rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #0b1120;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
+      transition: 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(56, 189, 248, 0.7);
+    }
+
+    .btn-ghost {
+      padding: 0.75rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .btn-ghost i {
+      color: var(--primary);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #1f2937 0, #020617 65%);
+      border-radius: 22px;
+      padding: 1.3rem 1.2rem 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow);
+      font-size: 0.9rem;
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .hero-list li {
+      display: flex;
+      gap: 0.45rem;
+      align-items: flex-start;
+      margin-bottom: 0.45rem;
+    }
+
+    .hero-list i {
+      color: var(--primary);
+      font-size: 0.85rem;
+      margin-top: 0.1rem;
+    }
+
+    /* SECCIONES */
+    section {
+      padding: 2.6rem 0;
+    }
+
+    .section-label {
+      color: var(--primary);
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      max-width: 620px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .category-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin: 1.7rem 0 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* PLANES */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.7rem;
+    }
+
+    .card {
+      background: var(--bg-soft-alt);
+      border-radius: var(--radius);
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 1.3rem 1.2rem 1.4rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.65rem;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 18px 50px rgba(56, 189, 248, 0.25);
+    }
+
+    .plan-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.2rem;
+    }
+
+    .plan-logo {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 0.8rem;
+    }
+    .combo-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .combo-logos img {
+      width: 52px;
+      height: auto;
+      object-fit: contain;
+    }
+
+
+    .plan-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .plan-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-top: 0.1rem;
+    }
+
+    .plan-description {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .plan-price {
+      text-align: center;
+      margin-top: 0.3rem;
+    }
+
+    .plan-price-amount {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .plan-price-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .btn-plan {
+      margin-top: 0.9rem;
+      background: var(--primary);
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #0b1120;
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.45);
+      transition: 0.2s;
+    }
+
+    .btn-plan i {
+      font-size: 1rem;
+    }
+
+    .btn-plan:hover {
+      transform: translateY(-1px);
+    }
+
+    /* CÓMO FUNCIONA */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background: var(--bg-soft-alt);
+      border-radius: 16px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 1.2rem 1.1rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .step-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* CONTACTO */
+    .contact-card {
+      background: var(--bg-soft-alt);
+      border-radius: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--shadow);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .contact-list i {
+      color: var(--primary);
+    }
+
+    footer {
+      padding: 1.2rem 0 1.7rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* BOTÓN FLOTANTE WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      background: var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.7rem;
+      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.7);
+      z-index: 200;
+      transition: 0.2s;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(22, 163, 74, 0.9);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      header {
+        position: static;
+      }
+
+      #inicio {
+        padding-top: 1.6rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="nav-logo-circle">
+              <!-- LOGO MASCOTA -->
+              <img src="Logos/Logosmascota.png" alt="Tech Solutions" class="logo-mascota" />
+            </div>
+            <div>
+              <div class="nav-brand-title">Tech Solutions</div>
+              <div class="nav-brand-sub">Planes de streaming 30 días</div>
+            </div>
+          </div>
+
+          <div class="nav-menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#planes">Planes</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+
+          <a class="nav-cta" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i>
+            Escribir por WhatsApp
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="inicio">
+        <div class="container hero">
+          <div>
+            <h1 class="hero-title">
+              Pantallas y planes de streaming<br />
+              para todo el que quiera <span class="hero-highlight">entretenimiento</span>.
+            </h1>
+            <p class="hero-text">
+              En <strong>Tech Solutions</strong> te ayudamos a tener acceso a Netflix, Disney+, Max, Prime Video,
+              Paramount+, Rakuten Viki, IPTV, Vix, Universal+, Win+, Spotify, YouTube Premium, Canva, Duolingo,
+              ChatGPT y mucho más, con planes de <strong>30 días</strong>.
+            </p>
+
+            <div class="hero-badges">
+              <span class="hero-badge"><i class="fa-solid fa-bolt"></i> Activación rápida</span>
+              <span class="hero-badge"><i class="fa-solid fa-mobile-screen"></i> Atención por WhatsApp</span>
+              <span class="hero-badge"><i class="fa-solid fa-lock"></i> Pagos Nequi y Daviplata</span>
+              <span class="hero-badge"><i class="fa-solid fa-location-dot"></i> Colombia</span>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn-primary" href="#planes">
+                <i class="fa-solid fa-layer-group"></i>
+                Ver planes disponibles
+              </a>
+              <a class="btn-ghost" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i>
+                Cotizar por WhatsApp
+              </a>
+            </div>
+
+            <p class="hero-note">
+              ✅ Planes por 30 días · ✅ Para cualquier dispositivo · ✅ Envío directo al WhatsApp · ✅ Pagos seguros.
+            </p>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-card-title">Plataformas que manejamos</div>
+            <ul class="hero-list">
+              <li><i class="fa-solid fa-circle-check"></i><span>Streaming principal: Netflix, Disney+, Max, Prime Video, Paramount+, Rakuten Viki, Vix, Universal+, Win+.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span>TV en vivo: IPTV, Flujo TV, DirecTV, Tele Latino.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span>Música: Spotify, YouTube Premium, Deezer.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span>Productividad y estudio: Canva, Office 365, Duolingo, ChatGPT.</span></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PLANES -->
+      <section id="planes">
+        <div class="container">
+          <div class="section-label">Planes</div>
+          <div class="section-title">Planes de streaming y servicios digitales</div>
+          <div class="section-subtitle">
+            Todos los valores están en pesos colombianos (COP) y la mayoría de los planes son por
+            <strong>30 días</strong>. Puedes ajustar los precios desde el archivo cuando lo necesites.
+          </div>
+
+          <!-- STREAMING PRINCIPAL -->
+          <div class="category-title">Streaming principal</div>
+          <div class="plans-grid">
+            <!-- Netflix -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/Netflix.png" alt="Netflix" class="plan-logo" />
+                <div class="plan-name">Netflix 30 días</div>
+                <span class="plan-badge">Series & películas</span>
+              </div>
+              <p class="plan-description">
+                Contenido para toda la familia con estrenos constantes.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$13.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Disney+ -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/disney.png" alt="Disney+" class="plan-logo" />
+                <div class="plan-name">Disney+ sin anuncios</div>
+                <span class="plan-badge">Familiar</span>
+              </div>
+              <p class="plan-description">
+                Disney, Marvel, Pixar, Star Wars y más, sin anuncios.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$10.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Disney+ con ESPN -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/disney-espn.png" alt="Disney+ con ESPN" class="plan-logo" />
+                <div class="plan-name">Disney+ con ESPN</div>
+                <span class="plan-badge">Familiar + deportes</span>
+              </div>
+              <p class="plan-description">
+                Todo el contenido de Disney+ más deportes en vivo con ESPN.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$12.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Max -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/max.png" alt="Max" class="plan-logo" />
+                <div class="plan-name">Max 30 días</div>
+                <span class="plan-badge">Series & películas</span>
+              </div>
+              <p class="plan-description">
+                Series originales, cine y documentales exclusivos.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$7.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Max Platinum -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/max.png" alt="Max Platinum" class="plan-logo" />
+                <div class="plan-name">Max Platinum</div>
+                <span class="plan-badge">Premium</span>
+              </div>
+              <p class="plan-description">
+                Versión premium de Max (según disponibilidad).
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$10.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Prime Video -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/Primevideo.png" alt="Prime Video" class="plan-logo" />
+                <div class="plan-name">Prime Video 30 días</div>
+                <span class="plan-badge">Entretenimiento</span>
+              </div>
+              <p class="plan-description">
+                Series, películas y contenido exclusivo de Amazon.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$7.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Paramount+ -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/paramount.png" alt="Paramount+" class="plan-logo" />
+                <div class="plan-name">Paramount+ 30 días</div>
+                <span class="plan-badge">Series & pelis</span>
+              </div>
+              <p class="plan-description">
+                Películas, realities y contenido extra para complementar tu catálogo.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$7.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Crunchyroll -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/crunchyroll.png" alt="Crunchyroll" class="plan-logo" />
+                <div class="plan-name">Crunchyroll 30 días</div>
+                <span class="plan-badge">Anime</span>
+              </div>
+              <p class="plan-description">
+                Anime subtitulado y doblado, temporadas nuevas y clásicas.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$5.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Rakuten Viki -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/rakutenviki.png" alt="Rakuten Viki" class="plan-logo" />
+                <div class="plan-name">Rakuten Viki 30 días</div>
+                <span class="plan-badge">Top ventas · Doramas</span>
+              </div>
+              <p class="plan-description">
+                K-dramas, C-dramas y contenido asiático. Ideal para maratonear novelas.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$6.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Vix -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/vix.png" alt="Vix" class="plan-logo" />
+                <div class="plan-name">Vix Premium 30 días</div>
+                <span class="plan-badge">Novelas & canales</span>
+              </div>
+              <p class="plan-description">
+                Telenovelas, contenido latino y canales en vivo seleccionados.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$6.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Universal+ -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/universalplus.png" alt="Universal+" class="plan-logo" />
+                <div class="plan-name">Universal+ 30 días</div>
+                <span class="plan-badge">Series & pelis</span>
+              </div>
+              <p class="plan-description">
+                Canales y contenido de Universal con series y películas.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$8.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Win+ -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/winplus.png" alt="Win+" class="plan-logo" />
+                <div class="plan-name">Win+ / Win Sports Online</div>
+                <span class="plan-badge">Deportes</span>
+              </div>
+              <p class="plan-description">
+                Fútbol profesional colombiano y más deportes.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$19.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+      <!-- COMBOS -->
+      <div class="category-title">Combos especiales 💥</div>
+      <div class="section-subtitle">
+        Combos reales listos para vender. Precios ajustados según tu oferta actual.  
+        Si quieres, puedo agregar más combos después.
+      </div>
+
+      <div class="plans-grid">
+
+        <!-- Combo 1: Netflix + Rakuten Viki -->
+        <div class="card">
+          <div class="plan-header">
+            <div class="combo-logos">
+              <img src="Logos/Netflix.png" alt="Netflix" />
+              <img src="Logos/rakutenviki.png" alt="Rakuten Viki" />
+            </div>
+            <div class="plan-name">Netflix + Rakuten Viki</div>
+            <span class="plan-badge">Dúo Premium</span>
+          </div>
+          <p class="plan-description">
+            Perfecto para ver de todo: Netflix con series y películas, y Rakuten Viki para doramas y contenido asiático.
+          </p>
+          <div class="plan-price">
+            <div class="plan-price-amount">$16.000</div>
+            <div class="plan-price-note">Precio por 30 días</div>
+          </div>
+          <a class="btn-plan"
+             href="https://wa.me/message/ZGSHP6DU3II7C1?text=Hola,%20quiero%20el%20combo%20Netflix%20+%20Rakuten%20Viki"
+             target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+          </a>
+        </div>
+
+        <!-- Combo 2: Prime Video + Rakuten Viki -->
+        <div class="card">
+          <div class="plan-header">
+            <div class="combo-logos">
+              <img src="Logos/Primevideo.png" alt="Prime Video" />
+              <img src="Logos/rakutenviki.png" alt="Rakuten Viki" />
+            </div>
+            <div class="plan-name">Prime Video + Rakuten Viki</div>
+            <span class="plan-badge">Dúo Streaming</span>
+          </div>
+          <p class="plan-description">
+            Ideal para variedad: Prime Video con contenido exclusivo y Rakuten Viki para doramas.
+          </p>
+          <div class="plan-price">
+            <div class="plan-price-amount">$10.000</div>
+            <div class="plan-price-note">Precio por 30 días</div>
+          </div>
+          <a class="btn-plan"
+             href="https://wa.me/message/ZGSHP6DU3II7C1?text=Hola,%20quiero%20el%20combo%20Prime%20Video%20+%20Rakuten%20Viki"
+             target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+          </a>
+        </div>
+
+        <!-- Combo 3: Vix + Paramount+ + Max + Prime Video -->
+        <div class="card">
+          <div class="plan-header">
+            <div class="combo-logos">
+              <img src="Logos/vix.png" alt="Vix" />
+              <img src="Logos/paramount.png" alt="Paramount+" />
+              <img src="Logos/max.png" alt="Max" />
+              <img src="Logos/Primevideo.png" alt="Prime Video" />
+            </div>
+            <div class="plan-name">Vix + Paramount+ + Max + Prime Video</div>
+            <span class="plan-badge">Combo de 4 Apps</span>
+          </div>
+          <p class="plan-description">
+            El combo más completo para novelas, películas, estrenos y contenido exclusivo.
+          </p>
+          <div class="plan-price">
+            <div class="plan-price-amount">$14.000</div>
+            <div class="plan-price-note">Precio combo 4 apps</div>
+          </div>
+          <a class="btn-plan"
+             href="https://wa.me/message/ZGSHP6DU3II7C1?text=Hola,%20quiero%20el%20combo%20Vix%20+%20Paramount%20+%20Max%20+%20Prime"
+             target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+          </a>
+        </div>
+
+        <!-- Combo 4: Rakuten Viki + Max + Prime Video -->
+        <div class="card">
+          <div class="plan-header">
+            <div class="combo-logos">
+              <img src="Logos/rakutenviki.png" alt="Rakuten Viki" />
+              <img src="Logos/max.png" alt="Max" />
+              <img src="Logos/Primevideo.png" alt="Prime Video" />
+            </div>
+            <div class="plan-name">Rakuten Viki + Max + Prime Video</div>
+            <span class="plan-badge">Combo Triple</span>
+          </div>
+          <p class="plan-description">
+            Doramas, estrenos y contenido exclusivo, todo en un solo paquete.
+          </p>
+          <div class="plan-price">
+            <div class="plan-price-amount">$12.000</div>
+            <div class="plan-price-note">Precio por 30 días</div>
+          </div>
+          <a class="btn-plan"
+             href="https://wa.me/message/ZGSHP6DU3II7C1?text=Hola,%20quiero%20el%20combo%20Rakuten%20Viki%20+%20Max%20+%20Prime"
+             target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+          </a>
+        </div>
+
+        <!-- Combo 5: Netflix + Prime Video -->
+        <div class="card">
+          <div class="plan-header">
+            <div class="combo-logos">
+              <img src="Logos/Netflix.png" alt="Netflix" />
+              <img src="Logos/Primevideo.png" alt="Prime Video" />
+            </div>
+            <div class="plan-name">Netflix + Prime Video</div>
+            <span class="plan-badge">Dúo Popular</span>
+          </div>
+          <p class="plan-description">
+            Dos plataformas top: Netflix con estrenos y Prime Video con contenido exclusivo.
+          </p>
+          <div class="plan-price">
+            <div class="plan-price-amount">$17.000</div>
+            <div class="plan-price-note">Precio por 30 días</div>
+          </div>
+          <a class="btn-plan"
+             href="https://wa.me/message/ZGSHP6DU3II7C1?text=Hola,%20quiero%20el%20combo%20Netflix%20+%20Prime%20Video"
+             target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+          </a>
+        </div>
+
+      </div>
+
+                
+
+          <!-- OTROS SERVICIOS -->
+          <div class="category-title">Otros servicios</div>
+          <div class="plans-grid">
+            <!-- Flujo TV -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/flujotv.png" alt="Flujo TV" class="plan-logo" />
+                <div class="plan-name">Flujo TV</div>
+                <span class="plan-badge">TV online</span>
+              </div>
+              <p class="plan-description">
+                Canales en vivo por internet, ideal para ver TV desde cualquier dispositivo.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$10.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- IPTV -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/iptv.png" alt="IPTV" class="plan-logo" />
+                <div class="plan-name">IPTV</div>
+                <span class="plan-badge">Canales</span>
+              </div>
+              <p class="plan-description">
+                Listas IPTV con canales nacionales e internacionales.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$7.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- DirecTV -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/directv.png" alt="DirecTV" class="plan-logo" />
+                <div class="plan-name">DirecTV</div>
+                <span class="plan-badge">TV</span>
+              </div>
+              <p class="plan-description">
+                Paquetes con canales deportivos y de entretenimiento (ajusta según plan).
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$18.000</div>
+                <div class="plan-price-note">Precio referencia 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Tele Latino -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/telelatino.png" alt="Tele Latino" class="plan-logo" />
+                <div class="plan-name">Tele Latino</div>
+                <span class="plan-badge">TV & VOD</span>
+              </div>
+              <p class="plan-description">
+                Películas, series y canales latinos en una sola app.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$10.000</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Apple TV -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/appletv.png" alt="Apple TV" class="plan-logo" />
+                <div class="plan-name">Apple TV+</div>
+                <span class="plan-badge">Series originales</span>
+              </div>
+              <p class="plan-description">
+                1 mes: $10.000 · 3 meses: $16.000. Contenido original de Apple.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$10.000</div>
+                <div class="plan-price-note">Desde (1 mes)</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- MÚSICA & CREATIVIDAD -->
+          <div class="category-title">Música & creatividad</div>
+          <div class="plans-grid">
+            <!-- Spotify -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/spotify.png" alt="Spotify" class="plan-logo" />
+                <div class="plan-name">Spotify Premium</div>
+                <span class="plan-badge">Música</span>
+              </div>
+              <p class="plan-description">
+                1 mes: $11.000 · 2 meses: $16.000. Música sin anuncios y descarga.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$11.000</div>
+                <div class="plan-price-note">Desde (1 mes)</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- YouTube Premium -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/youtube.png" alt="YouTube Premium" class="plan-logo" />
+                <div class="plan-name">YouTube Premium 1 mes</div>
+                <span class="plan-badge">Video & música</span>
+              </div>
+              <p class="plan-description">
+                YouTube sin anuncios, reproducción en segundo plano y descargas.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$11.000</div>
+                <div class="plan-price-note">Precio por 1 mes</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Deezer -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/deezer.png" alt="Deezer" class="plan-logo" />
+                <div class="plan-name">Deezer 1 mes</div>
+                <span class="plan-badge">Música</span>
+              </div>
+              <p class="plan-description">
+                Música en streaming con playlists, radios y contenido exclusivo.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$8.000</div>
+                <div class="plan-price-note">Precio por 1 mes</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Canva -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/canva.png" alt="Canva" class="plan-logo" />
+                <div class="plan-name">Canva Pro</div>
+                <span class="plan-badge">Diseño</span>
+              </div>
+              <p class="plan-description">
+                30 días: $8.000 · 1 año: $25.000. Ideal para diseños, redes y branding.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$8.000</div>
+                <div class="plan-price-note">Desde (30 días)</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Office 365 -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/office365.png" alt="Office 365" class="plan-logo" />
+                <div class="plan-name">Office 365 x12 meses</div>
+                <span class="plan-badge">Productividad</span>
+              </div>
+              <p class="plan-description">
+                Licencia anual con Word, Excel, PowerPoint y más.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$25.000</div>
+                <div class="plan-price-note">Precio por 12 meses</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- CapCut -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/capcut.png" alt="CapCut Pro" class="plan-logo" />
+                <div class="plan-name">CapCut Pro 30 días</div>
+                <span class="plan-badge">Edición de video</span>
+              </div>
+              <p class="plan-description">
+                Ideal para creadores de contenido, reels y TikTok.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$19.500</div>
+                <div class="plan-price-note">Precio por 30 días</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Duolingo -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/duolingo.png" alt="Duolingo" class="plan-logo" />
+                <div class="plan-name">Duolingo Super</div>
+                <span class="plan-badge">Idiomas</span>
+              </div>
+              <p class="plan-description">
+                1 mes: $5.500 · 1 año: $17.500. Aprende idiomas sin anuncios.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$5.500</div>
+                <div class="plan-price-note">Desde (1 mes)</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+
+            <!-- ChatGPT -->
+            <div class="card">
+              <div class="plan-header">
+                <img src="Logos/chatgpt.png" alt="ChatGPT" class="plan-logo" />
+                <div class="plan-name">ChatGPT 1 mes</div>
+                <span class="plan-badge">IA</span>
+              </div>
+              <p class="plan-description">
+                Asistente inteligente para estudiar, trabajar, crear contenido y automatizar tareas.
+              </p>
+              <div class="plan-price">
+                <div class="plan-price-amount">$22.000</div>
+                <div class="plan-price-note">Precio por 1 mes</div>
+              </div>
+              <a class="btn-plan" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contratar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CÓMO FUNCIONA -->
+      <section id="como-funciona">
+        <div class="container">
+          <div class="section-label">Proceso</div>
+          <div class="section-title">Cómo funciona con Tech Solutions</div>
+          <div class="section-subtitle">
+            Es muy sencillo: eliges tu plan, nos hablas por WhatsApp, haces el pago y recibes tus accesos.
+            Te acompañamos si tienes dudas para instalar o usar las aplicaciones.
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-icon"><i class="fa-solid fa-1"></i></div>
+              <div>
+                <div class="step-title">Elige tu plan o combo</div>
+                <div class="step-text">
+                  Revisa la sección de planes y combos, y elige las plataformas que más usas: Netflix, Disney+, Rakuten Viki, IPTV, etc.
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-icon"><i class="fa-solid fa-2"></i></div>
+              <div>
+                <div class="step-title">Escríbenos por WhatsApp</div>
+                <div class="step-text">
+                  Toca cualquier botón de <strong>“Contratar por WhatsApp”</strong>. Te atenderemos de forma personalizada.
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-icon"><i class="fa-solid fa-3"></i></div>
+              <div>
+                <div class="step-title">Realizas el pago</div>
+                <div class="step-text">
+                  Pagas por <strong>Nequi</strong> o <strong>Daviplata</strong>. Nos envías el comprobante y procesamos tu pedido.
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-icon"><i class="fa-solid fa-4"></i></div>
+              <div>
+                <div class="step-title">Recibes tus accesos</div>
+                <div class="step-text">
+                  Te enviamos las credenciales o activamos tu cuenta, según el servicio. Si lo necesitas, te guiamos paso a paso.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contacto">
+        <div class="container">
+          <div class="section-label">Contacto</div>
+          <div class="section-title">Hablemos por WhatsApp</div>
+          <div class="contact-card">
+            <div class="contact-info">
+              Si tienes dudas sobre algún plan, quieres un combo personalizado o cotizar para varios meses, escríbenos.
+            </div>
+
+            <ul class="contact-list">
+              <li>
+                <i class="fa-brands fa-whatsapp"></i>
+                <span><strong>WhatsApp:</strong> clic en el botón para abrir el chat.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span><strong>Ubicación:</strong> Colombia (horario local).</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-credit-card"></i>
+                <span><strong>Métodos de pago:</strong> Nequi y Daviplata.</span>
+              </li>
+            </ul>
+
+            <a class="btn-primary" href="https://wa.me/message/ZGSHP6DU3II7C1" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i>
+              Escribir ahora por WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Tech Solutions · Planes de streaming y servicios digitales · Hecho con 💙 en Colombia
+    </footer>
+  </div>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/message/ZGSHP6DU3II7C1" class="whatsapp-float" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</body>
+</html>
